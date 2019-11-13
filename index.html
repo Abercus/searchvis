@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Tool to visualize searching algorithms">
+  <meta name="author" content="Joonas Puura">
+
+  <title>Algo visualisation</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/vis.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Page Content -->
+  <div class="container">
+    <div class="row">
+      <div id="titlerow" class="col-lg-12 text-center">
+        <h1 class="mt-5 display-3">Search visualisation tool</h1>
+      </div>
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="viscontainer">
+            <div class="wrapper">
+
+              <div id="svg">
+
+              </div>
+              <div id="canvas">
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <label for="field-size" class="col-form-label">Field size in pixels (width, height):</label>
+          <div>
+            <input class="form-control" type="number" id="width-input" min="0" value="1000" />
+            <input class="form-control" type="number" id="height-input" min="0" value="1000" />
+            <div>
+              <button class="btn btn-primary" id='updatefield'>Apply</button>
+            </div>
+          </div>
+          <div class="shapes">
+            <label for="shapesarea" class="col-form-label">Objects</label>
+            <textarea id="shapesarea" class="form-control" rows="8"></textarea>
+            <button class="btn btn-primary" id='addshapes'>Add objects</button>
+          </div>
+          <div class="fileup">
+            <label for="file-input" class="col-form-label">Path file</label>
+            <input class="form-control-file" type="file" id="file-input" accept="text/plain" />
+          </div>
+
+          <div class="fileup">
+            <label for="coverage-input" class="col-form-label">Coverage file</label>
+            <input class="form-control-file" type="file" id="coverage-input" accept="text/plain" />
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-2">
+        <button id='download' class="btn btn-info">Download as PNG</button>
+      </div>
+      <div class="col-lg-2">
+        <button id='clearsvg' class="btn btn-danger">Clear all</button>
+      </div>
+    </div>
+
+
+    <div id="tutorial">
+      <div class="row">
+        <div class="col-lg-1">
+          <h3 class="text-center">Guide</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <h4>Adding objects to the plot:</h4>
+          <ul>
+            <li>circle x y radius color</li>
+            <li>rectangle x1 y1 x2 y2 color</li>
+            <li>polygon x1 y1 x2 y2 x3 y3 ... color</li>
+            <li>line x1 y1 x2 y2 width color</li>
+            <li>text "INPUT TEXT" x y font_size color</li>
+          </ul>
+          <h4>Adding path to the plot</h4>
+          <p>Select a file from your computer in the following format:</p>
+          <pre><xmp class="border">x1 y1
+x2 y2
+x3 y3
+... </xmp>
+          </pre>
+          <h4>Adding search coverage to the plot</h4>
+          <p>Select a file from your computer in the following format:</p>
+          <pre><xmp class="border">x1 y1
+x2 y2
+x3 y3
+... </xmp></pre>
+        </div>
+        <div id="code-example" class="col-lg-6">
+          <h4>Objects code sample:</h4>
+          <pre><xmp class="border">circle 180 920 8 blue
+circle 800 80 8 red
+circle 470 250 180 lightgreen
+rectangle 50 550 700 500 lightblue
+rectangle 150 800 350 600 pink
+circle 550 720 150 pink
+rectangle 600 420 850 480 pink
+rectangle 0 320 350 380 pink
+line 550 50 950 150 1 pink
+text "A" 160 930 20 black
+text "B" 820 80 20 black
+text "SWAMP, 2x slower" 400 300 20 black
+text "SEA, 4x slower" 200 530 20 black
+text "BLOCK 1" 200 700 20 black
+text "BLOCK 2" 540 720 20 black
+text "BLOCK 3" 650 450 20 black
+text "BLOCK 4" 50 360 20 black</xmp></pre>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.slim.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="js/d3.min.js"></script>
+  <script src="js/saveSvgAsPng.js"></script>
+  <script src="js/vis.js"></script>
+</body>
+
+</html>
