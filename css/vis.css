@@ -18,6 +18,10 @@ textarea {
     overflow: hidden;
 }
 
+.addbuttons {
+    margin-top: 6em;
+}
+
 .wrapper {
   position: relative;
 }
