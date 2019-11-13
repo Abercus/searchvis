@@ -257,10 +257,12 @@ var updateVariables = function () {
 d3.select("#download")
     .on('click', function () {
         // Get the d3js SVG element and save using saveSvgAsPng.js
+        
+
         saveSvgAsPng(document.getElementsByTagName("svg")[0], "plot.png", {
             scale: 1,
             backgroundColor: "#FFFFFF", width: fieldWidth, height: fieldHeight,
-            modifyStyle: { "border": "none" }
+            encoderOptions: 1
         });
     })
 
