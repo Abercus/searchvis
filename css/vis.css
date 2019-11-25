@@ -22,6 +22,10 @@ textarea {
     margin-top: 0.5em;
 }
 
+.forcesize {
+    height: 605px;
+    width: 605px;
+}
 .wrapper {
   position: relative;
 }

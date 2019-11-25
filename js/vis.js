@@ -199,7 +199,8 @@ var renderPath = function (data) {
 
 var fieldWidth = d3.select("#width-input").node().value;
 
-var fieldHeight = d3.select("#height-input").node().value;
+var fieldHeight = fieldWidth; // Force to be the same for now..
+// var fieldHeight = d3.select("#height-input").node().value;
 
 
 var viewBoxHeight = fieldHeight / 0.6; // 0.6 == 600 / 1000
@@ -224,21 +225,26 @@ var context = canv.node().getContext('2d');
 
 var updateVariables = function () {
     fieldWidth = d3.select("#width-input").node().value;
-    fieldHeight = d3.select("#height-input").node().value;
+    fieldHeight = fieldWidth; // Force to be same for now. 
+    // fieldHeight = d3.select("#height-input").node().value;
 
+    var visc = d3.selectAll(".viscontainer");
 
-    if (fieldWidth > 600) {
+    if (fieldWidth > 600 && fieldHeight > 600) {
         viewBoxHeight = Math.ceil(fieldHeight / (600.0 / fieldHeight));
         viewBoxWidth = Math.ceil(fieldWidth / (600.0 / fieldWidth));
-        svg.style("border", "none");
-        d3.selectAll(".viscontainer").style("border", "solid");
+        //svg.style("border", "none");
+        visc.style("border", "solid");
+        visc.style("height", "605px");
+        visc.style("width", "605px");
     } else {
         viewBoxHeight = fieldWidth;
         viewBoxWidth = fieldHeight;
-        console.log(d3.selectAll("viscontainer"));
-        svg.style("border", "solid");
-        d3.selectAll(".viscontainer").style("border", "none");
-
+        //svg.style("border", "solid");
+        //d3.selectAll(".viscontainer").style("border", "none");
+        visc.style("border", "solid");
+        visc.style("height",  String(fieldHeight) + "px");
+        visc.style("width", String(fieldWidth) + "px");
 
     }
 
@@ -258,12 +264,15 @@ d3.select("#download")
     .on('click', function () {
         // Get the d3js SVG element and save using saveSvgAsPng.js
         
-
         saveSvgAsPng(document.getElementsByTagName("svg")[0], "plot.png", {
             scale: 1,
             backgroundColor: "#FFFFFF", width: fieldWidth, height: fieldHeight,
             encoderOptions: 1
+        }, function() {
+            
         });
+
+
     })
 
 d3.select("#updatefield")
