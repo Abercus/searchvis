@@ -312,13 +312,17 @@
     const convertToPng = ({src, width, height}) => {
       const canvas = document.createElement('canvas');
       const context = canvas.getContext('2d');
-      const pixelRatio = window.devicePixelRatio || 1;
-
+      //const pixelRatio = window.devicePixelRatio || 1;
+      const pixelRatio = 1;
       canvas.width = width * pixelRatio;
       canvas.height = height * pixelRatio;
+
+      
       canvas.style.width = `${canvas.width}px`;
       canvas.style.height = `${canvas.height}px`;
       context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+
+
 
       if (canvg) canvg(canvas, src);
       else context.drawImage(src, 0, 0);

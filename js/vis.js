@@ -265,8 +265,9 @@ d3.select("#download")
         // Get the d3js SVG element and save using saveSvgAsPng.js
         
         saveSvgAsPng(document.getElementsByTagName("svg")[0], "plot.png", {
-            scale: 1,
-            backgroundColor: "#FFFFFF", width: fieldWidth, height: fieldHeight,
+            backgroundColor: "#FFFFFF", 
+            width: parseInt(fieldWidth), 
+            height: parseInt(fieldHeight),
             encoderOptions: 1
         }, function() {
             
