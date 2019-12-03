@@ -271,9 +271,6 @@ d3.select("#download")
             backgroundColor: "#FFFFFF", 
             width: parseInt(fieldWidth), 
             height: parseInt(fieldHeight),
-            modifyStyle: {
-                
-            },
             encoderOptions: 1
         }, function() {
             
