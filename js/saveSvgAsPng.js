@@ -321,8 +321,12 @@
       canvas.style.width = `${canvas.width}px`;
       canvas.style.height = `${canvas.height}px`;
       context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
-
-
+      //context.imageSmoothingEnabled = false;
+      context['imageSmoothingEnabled'] = false;       /* standard */
+      context['mozImageSmoothingEnabled'] = false;    /* Firefox */
+      context['oImageSmoothingEnabled'] = false;      /* Opera */
+      context['webkitImageSmoothingEnabled'] = false; /* Safari */
+      context['msImageSmoothingEnabled'] = false;     /* IE */
 
       if (canvg) canvg(canvas, src);
       else context.drawImage(src, 0, 0);

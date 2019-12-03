@@ -11,6 +11,7 @@ var renderRectangle = function (x1, y1, x2, y2, color) {
         .attr("x", x1).attr("y", y1)
         .attr("width", x2 - x1).attr("height", y2 - y1)
         .attr("fill", color)
+        .attr("shape-rendering", "crispEdges")
         .attr("stroke", color);
 
 }
@@ -30,7 +31,8 @@ var renderCircle = function (x, y, radius, color) {
         .attr('cy', y)
         .attr('r', radius)
         .attr('stroke', color)
-        .attr('fill', color);
+        .attr('fill', color)
+        .attr('shape-rendering', "crispEdges");
 
 }
 
@@ -41,6 +43,7 @@ var renderText = function (text, x, y, font_size, color) {
         .attr("font-family", "sans-serif")
         .attr("font-size", font_size)
         .attr("fill", color)
+        .attr('shape-rendering', "crispEdges")
         .text(text);
 
 
@@ -59,6 +62,7 @@ var renderPolygon = function (coords, color) {
 
     svg.append("polygon").attr("points", polyPoints)
         .style("fill", color)
+        .attr('shape-rendering', "crispEdges")
         .style("stroke", color);
 
 }
@@ -131,10 +135,9 @@ var renderShapes = function (data) {
     })
 }
 
-
 var renderLine = function (x1, y1, x2, y2, width, color) {
     svg.append("line").attr("x1", x1).attr("y1", y1).attr("x2", x2).attr("y2", y2)
-        .attr("stroke-width", width).attr("stroke", color);
+        .attr("stroke-width", width).attr("stroke", color).attr("shape-rendering", "crispEdges");
 
 }
 
@@ -268,6 +271,9 @@ d3.select("#download")
             backgroundColor: "#FFFFFF", 
             width: parseInt(fieldWidth), 
             height: parseInt(fieldHeight),
+            modifyStyle: {
+                
+            },
             encoderOptions: 1
         }, function() {
             

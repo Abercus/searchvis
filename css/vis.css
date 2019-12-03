@@ -30,6 +30,9 @@ textarea {
   position: relative;
 }
 
+*{
+  shape-rendering: crispEdges;
+ }
 
 #svg {
     position: absolute;
